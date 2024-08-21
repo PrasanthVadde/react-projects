@@ -1,8 +1,8 @@
 import { toast } from 'react-toastify'
 
 
-export const successToast =(message)=>{
-    toast.success(message, {
+export const successToast =(notification)=>{
+    toast.success(notification, {
         position: "top-center"
       });
 }
