@@ -1,5 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { CustomSpinner,CustomDNASpinner } from '../components/spinners/tailspin';
+import { CustomToast } from '../components/toast/toast';
+import { InstagramHeart } from '../components/instagramHeart/insatHeart';
+
 
 function DefaultCard() {
   return (
@@ -11,6 +15,10 @@ function DefaultCard() {
           Some quick example text to build on the card title and make up the
           bulk of the  content.
         </Card.Text>
+        <CustomSpinner height={"60"} width={"80"} color={"#000"} />
+        <CustomDNASpinner/>
+        <CustomToast message ={"I am a Card"}/>
+        <InstagramHeart/>
         <Button variant="primary">See More..</Button>
       </Card.Body>
     </Card>
