@@ -7,8 +7,8 @@ export const successToast =(notification)=>{
       });
 }
 
-export const errorToast =(message)=>{
-    toast.success(message, {
+export const errorToast =(notification)=>{
+    toast.success(notification, {
         position: "top-center"
       });
 }
