@@ -4,6 +4,7 @@ import { CustomSpinner} from '../components/spinners/tailspin';
 import { CustomToast } from '../components/toast/toast';
 import { InstagramHeart } from '../components/instagramHeart/insatHeart';
 import { ReactIcon } from '../components/icons/dev-icons';
+// import CustomList from '../components/list/list';
 
 
 function DefaultCard() {
@@ -27,5 +28,20 @@ function DefaultCard() {
     </Card>
   );
 }
+
+
+
+export const CustomCard=({title,source})=>{
+  return (
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={source} />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        {/* <Button variant="primary">Go somewhere</Button> */}
+      </Card.Body>
+    </Card>
+  );
+}
+
 
 export default DefaultCard;

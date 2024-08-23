@@ -1,13 +1,15 @@
-import NavBar from "./react-bootstrap/navbar";
-import DefaultCard from "./react-bootstrap/card";
-import DefaultCarousel from "./react-bootstrap/carousels";
-import Footer from "./react-bootstrap/footer";
-import { InstagramLoader } from "./components/contentLoader/instagramContentLoader";
-import { GitIcon } from "./components/icons/dev-icons";
+// import NavBar from "./react-bootstrap/navbar";
+// import DefaultCard from "./react-bootstrap/card";
+// import DefaultCarousel from "./react-bootstrap/carousels";
+// import Footer from "./react-bootstrap/footer";
+// import { InstagramLoader } from "./components/contentLoader/instagramContentLoader";
+// import { GitIcon } from "./components/icons/dev-icons";
+import { Recipe } from "./components/recipeListing/recipeList";
 function App() {
   return (
     <>
-      <NavBar />
+    <Recipe/>
+      {/* <NavBar />
       <DefaultCarousel />
       <div style= {{display:"flex", flexWrap:"wrap", justifyContent:"space-evenly",padding:"4px"}}>
       <DefaultCard/>
@@ -17,7 +19,7 @@ function App() {
       </div>
       <GitIcon/>
       <InstagramLoader/>
-      <Footer/>
+      <Footer/> */}
     </>
   );
 }
