@@ -1,21 +1,18 @@
 import NavBar from "./react-bootstrap/navbar";
-import DefaultCard from "./react-bootstrap/card";
 import DefaultCarousel from "./react-bootstrap/carousels";
 import Footer from "./react-bootstrap/footer";
 import { InstagramLoader } from "./components/contentLoader/instagramContentLoader";
-import { GitIcon } from "./components/icons/dev-icons";
+import { ClassComponent } from "./components/class-component/classComponent";
+import { Button } from "./components/class-component/youtubeButton";
+import{DefaultButton} from "./components/button/button.jsx"
 function App() {
   return (
     <>
+      <Button />
       <NavBar />
       <DefaultCarousel />
-      <div style= {{display:"flex", flexWrap:"wrap", justifyContent:"space-evenly",padding:"4px"}}>
-      <DefaultCard/>
-      <DefaultCard/>
-      <DefaultCard/>
-      <DefaultCard/>
-      </div>
-      <GitIcon/>
+      <DefaultButton value={"Add Data"}/>
+      <ClassComponent/>
       <InstagramLoader/>
       <Footer/>
     </>
