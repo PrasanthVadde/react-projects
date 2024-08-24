@@ -29,7 +29,7 @@ function DefaultCard() {
 }
 
 
-export const BasicCard =({title,description,value})=>{
+export const BasicCard =({title,description,value,ind,removeHandler})=>{
 
   return (
     <Card style={{ width: '18rem',margin:'8px' }}>
@@ -39,7 +39,7 @@ export const BasicCard =({title,description,value})=>{
         <Card.Text>
           {description}
         </Card.Text>
-        <Button variant="primary">{value}</Button>
+        <Button variant="primary" onClick={()=>removeHandler(ind)}>{value}</Button>
       </Card.Body>
     </Card>
   );
