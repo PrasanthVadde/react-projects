@@ -82,7 +82,7 @@ export class FakeStore extends Component {
     const selectedCategory = e.target.value;
     this.setState(
       {
-        selectedCategory,
+        selectedCategory: selectedCategory,
       },
       () => {
         this.filterCategory(selectedCategory);
