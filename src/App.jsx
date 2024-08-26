@@ -1,9 +1,9 @@
-import { FakeStore } from "./components/fakestore/fakestore";
 import 'bootstrap/dist/css/bootstrap.css';
+import { CustomTable} from './components/table/table';
 function App() {
   return (
     <>
-      <FakeStore />
+      <CustomTable/>
     </>
   );
 }
