@@ -7,87 +7,60 @@ export class FakeStore extends Component {
   state = {
     products: [],
     category: [],
-    filterData: [],
     isLoading: true,
-    error: false,
-    selectedCategory: "",
   };
 
   componentDidMount() {
-    this.fetchData();
-    this.fetchCategory();
-    this.filterCategory();
+    this.fetchProducts();
+    this.fetchCategories();
   }
 
-  fetchData = async () => {
-    try {
-      const { status, data } = await axios.get(
-        "https://fakestoreapi.com/products"
-      );
-      if (status === 200) {
-        this.setState({
-          products: data,
-          isLoading: false,
-        });
-      }
-    } catch (error) {
-      this.setState({
-        error: error.message,
-        isLoading: false,
-      });
-    }
-  };
-
-  fetchCategory = async () => {
-    try {
-      const { status, data } = await axios.get(
-        "https://fakestoreapi.com/products/categories/"
-      );
-
-      if (status === 200) {
-        this.setState({
-          category: data,
-          isLoading: false,
-        });
-      }
-    } catch (error) {
-      this.setState({
-        error: error.message,
-        isLoading: false,
-      });
-    }
-  };
-
-  filterCategory = async (category) => {
-    try {
-      const { status, data } = await axios.get(
-        `https://fakestoreapi.com/products/category/${category}`
-      );
-      console.log(data);
-      if (status === 200) {
-        this.setState({
-          filterData: data,
-          isLoading: false,
-        });
-      }
-    } catch (error) {
-      this.setState({
-        error: error.message,
-        isLoading: false,
-      });
-    }
-  };
-
-  filterDataHandler = (e) => {
-    const selectedCategory = e.target.value;
-    this.setState(
-      {
-        selectedCategory: selectedCategory,
-      },
-      () => {
-        this.filterCategory(selectedCategory);
-      }
+  fetchProducts = async () => {
+    const { data, status } = await axios.get(
+      `https://fakestoreapi.com/products`
     );
+    console.log(data);
+
+    if (status === 200) {
+      this.setState({
+        products: data,
+        isLoading: false,
+      });
+    }
+  };
+
+  fetchCategories = async () => {
+    const { data, status } = await axios.get(
+      `https://fakestoreapi.com/products/categories`
+    );
+    console.log(data);
+
+    if (status === 200) {
+      this.setState({
+        category: [...data, "all"],
+        isLoading: false,
+      });
+    }
+  };
+
+  categorySelectedHandler = (selectedCategory) => {
+    if (selectedCategory === "all") {
+      this.fetchProducts();
+    } else {
+      this.fetchCategoryProducts(selectedCategory);
+    }
+  };
+
+  fetchCategoryProducts = async (selected) => {
+    const { data, status } = await axios.get(
+      `https://fakestoreapi.com/products/category/${selected}`
+    );
+
+    if (status === 200) {
+      this.setState({
+        products: data,
+      });
+    }
   };
 
   render() {
@@ -111,39 +84,20 @@ export class FakeStore extends Component {
                         borderRadius: "4px",
                       }}
                       value={eachCategory}
-                      onClick={this.filterDataHandler}
+                      onClick={() => this.categorySelectedHandler(eachCategory)}
                     >
                       {eachCategory}
                     </button>
                   </>
                 );
               })}
-
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "10px",
-                  justifyContent: "space-evenly",
-                }}
-              >
-                {this.state.filterData.map((eachItem) => (
-                  <CustomCard
-                    key={eachItem.id}
-                    title={eachItem.title}
-                    source={eachItem.image}
-                    description={eachItem.description}
-                    price={`$${eachItem.price}`}
-                  />
-                ))}
-              </div>
             </div>
             <div
               style={{
                 display: "flex",
                 flexWrap: "wrap",
                 gap: "10px",
-                justifyContent: "space-evenly",
+                justifyContent: "center",
               }}
             >
               {this.state.products.map((eachItem) => {
