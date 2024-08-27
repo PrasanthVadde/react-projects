@@ -8,9 +8,7 @@ export class Weather extends Component {
     result: [],
     coords: {},
     isLoading: true,
-    name: "",
-    lat: "",
-    long: "",
+    name: ""
   };
 
   componentDidMount() {
