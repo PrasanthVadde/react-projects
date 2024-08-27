@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import { CustomTable} from './components/table/table';
+import { Weather } from './components/weather/weather';
+
 function App() {
   return (
     <>
-      <CustomTable/>
+      <Weather/>
     </>
   );
 }
