@@ -1,10 +1,10 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import { RecipeData } from './components/recipeListing/recipeData';
+import {FakeStore}  from './components/fakestore/demo';
+
 
 function App() {
   return (
     <>
-      <RecipeData/>
+      <FakeStore/>
     </>
   );
 }
