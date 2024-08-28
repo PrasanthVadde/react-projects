@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import { Weather } from './components/weather/weather';
+import { RecipeData } from './components/recipeListing/recipeData';
 
 function App() {
   return (
     <>
-      <Weather/>
+      <RecipeData/>
     </>
   );
 }
