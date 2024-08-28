@@ -82,8 +82,6 @@ export class FakeStore extends Component {
                         <Card.Img variant="top" src={eachItem.image} />
                         <Card.Body>
                           <Card.Title>{eachItem.title}</Card.Title>
-                          <Card.Text>{eachItem.description}</Card.Text>
-                          <Card.Title>$ {eachItem.price}</Card.Title>
                           <Button variant="primary">Click to see more</Button>
                         </Card.Body>
                       </Card>
