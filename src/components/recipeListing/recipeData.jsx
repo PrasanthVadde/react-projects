@@ -10,7 +10,8 @@ export class RecipeData extends Component {
   state = {
     data: [],
     isLoading: true,
-
+    specificRecipe: [],
+    modalShow: false,
   };
 
   componentDidMount() {
@@ -28,43 +29,16 @@ export class RecipeData extends Component {
     }
   };
 
-  ShowMore = (id) => {
-    
-    this.state.data.map((recipe) => {
-      if (recipe.id == id) {
-        console.log(recipe)
-        return (
-          <>
-            <div
-              className="modal show"
-              style={{ display: "block", position: "initial" }}
-            >
-              <Modal.Dialog>
-                <Modal.Header closeButton>
-                  <Modal.Title>{recipe.Name}</Modal.Title>
-                </Modal.Header>
+  ShowMore = (recipe) => {
+    this.setState({
+      specificRecipe: recipe,
+      modalShow: true,
+    });
+  };
 
-                <Modal.Body>
-                  <Card.Img variant="top" src={recipe.image} />
-                </Modal.Body>
-                <h2>{`Ingredients for the ${recipe.name}`}</h2>
-                <CustomList
-                  eachValue={recipe.ingredients}
-                  index={recipe.id}
-                />
-                <h2>{`Instructions for the ${recipe.name}`}</h2>
-                <CustomList
-                  eachValue={recipe.instructions}
-                  index={recipe.id}
-                />
-              </Modal.Dialog>
-            </div>
-          </>
-        );
-      }
-      else {
-        console.log("No Data"+ recipe.id)
-      }
+  closeHandler = () => {
+    this.setState({
+      modalShow: false,
     });
   };
 
@@ -89,16 +63,16 @@ export class RecipeData extends Component {
                     <Card.Img variant="top" src={eachRecipe.image} />
                     <Card.Body>
                       <Card.Title>{eachRecipe.name}</Card.Title>
-                      <Card.Title>{eachRecipe.rating}/5</Card.Title>
-                      <Card.Title>
+                      <Card.Text>{eachRecipe.rating}/5</Card.Text>
+                      <Card.Text>
                         No.of Persons: {eachRecipe.servings}
-                      </Card.Title>
-                      <Card.Title>
+                      </Card.Text>
+                      <Card.Text>
                         Time: {eachRecipe.prepTimeMinutes} Minutes
-                      </Card.Title>
+                      </Card.Text>
                       <Button
                         variant="primary"
-                        onClick={() => this.ShowMore(eachRecipe.id)}
+                        onClick={() => this.ShowMore(eachRecipe)}
                       >
                         Show More
                       </Button>
@@ -107,6 +81,30 @@ export class RecipeData extends Component {
                 );
               })}
             </div>
+
+            <Modal
+              show={this.state.modalShow}
+              size="lg"
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+            >
+              <Modal.Header>
+                <Modal.Title id="contained-modal-title-vcenter">
+                  {this.state.specificRecipe.name}
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body style={{display:'flex',flexDirection:"column",flexWrap:"wrap"}}>
+                <Card.Img variant="top" src={this.state.specificRecipe.image} style={{width:"50%",height:"50%",borderRadius:"16px",alignSelf:"center"}} />
+                <p>{this.state.specificRecipe.description}</p>
+                <h4>{`Ingredients for:${this.state.specificRecipe.name}`}</h4>
+                <CustomList list={this.state.specificRecipe.ingredients} />
+                <h4>{`Instructions for:${this.state.specificRecipe.name}`}</h4>
+                <CustomList list={this.state.specificRecipe.instructions} />
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={this.closeHandler}>Close</Button>
+              </Modal.Footer>
+            </Modal>
           </>
         )}
       </>
