@@ -44,9 +44,6 @@ export class FakeStore extends Component {
             cardClicked: !this.state.cardClicked,
             cardClicked1: true,
             specificData: eachProduct,
-          },
-          () => {
-            console.log(this.state.specificData, this.state.cardClicked);
           }
         );
       }

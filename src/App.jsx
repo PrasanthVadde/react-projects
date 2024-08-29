@@ -1,10 +1,11 @@
-import {FakeStore}  from './components/fakestore/demo';
+import { Home } from "./components/home/home";
+
 
 
 function App() {
   return (
     <>
-      <FakeStore/>
+    <Home/>
     </>
   );
 }
