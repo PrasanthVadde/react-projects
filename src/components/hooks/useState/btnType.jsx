@@ -23,17 +23,22 @@ export const BtnType = () => {
     <>
       <h1>Button is :{BtnType}</h1>
       <div
-        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "2px",
+        }}
       >
         {type.map((eachType, ind) => {
           return (
-            <button
+            <span
               key={ind}
               style={{ width: "150px" }}
               onClick={() => typeHandler(ind + 1)}
             >
               {eachType}
-            </button>
+            </span>
           );
         })}
       </div>
