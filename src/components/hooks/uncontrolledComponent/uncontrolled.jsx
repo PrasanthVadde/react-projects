@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useRef } from "react";
-// import { MdDeleteForever } from "react-icons/md";
+import { MdDeleteForever } from "react-icons/md";
 import Table from "react-bootstrap/Table";
 
 export const UncontrolledComponent = () => {
@@ -22,8 +22,6 @@ export const UncontrolledComponent = () => {
     } else {
       loginApi(usernameEntered, passwordEntered);
     }
-
-
   };
 
   const validation = (username, password) => {
@@ -46,15 +44,25 @@ export const UncontrolledComponent = () => {
 
   const loginApi = async (username, password) => {
     try {
-      const {data} =await axios.post("https://dummyjson.com/auth/login", {
+      const { data } = await axios.post("https://dummyjson.com/auth/login", {
         username: username,
         password: password,
       });
-      setUserData(data)
+      setUserData([...userData, data]);
+      console.log(userData);
     } catch (err) {
       console.error(err);
     }
   };
+
+  const deleteHandler = (targetId) => {
+    const updatedData = userData.filter(
+      (eachperson) => eachperson.id !== targetId
+    );
+
+    setUserData(updatedData);
+  };
+
   return (
     <>
       <form onSubmit={onSubmit}>
@@ -83,27 +91,38 @@ export const UncontrolledComponent = () => {
         </button>
       </form>
 
-      <Table>
-        <thead>
-          <tr>
-            <th>S.no</th>
-            <th>User Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* {userData.map((eachPerson) => {
-            return (
-              <tr key={eachPerson.id}>
-                <td>{eachPerson.name}</td>
-                <td></td>
-                <td>
-                  <MdDeleteForever />
-                </td>
+      {userData.length > 0 ? (
+        <>
+          <Table>
+            <thead>
+              <tr>
+                <th>S.no</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th></th>
               </tr>
-            );
-          })} */}
-        </tbody>
-      </Table>
+            </thead>
+            <tbody>
+              {userData.map((eachPerson, id) => {
+                return (
+                  <tr key={eachPerson.id}>
+                    <td>{id + 1}</td>
+                    <td>{eachPerson.firstName}</td>
+                    <td>{eachPerson.lastName}</td>
+                    <td>
+                      <MdDeleteForever
+                        onClick={() => deleteHandler(eachPerson.id)}
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 };
