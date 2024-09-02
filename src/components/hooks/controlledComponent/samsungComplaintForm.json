@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "model": "Samsung M31s",
+      "mobileNumber": "9687534895",
+      "complaint": "Speaker Issue"
+    },
+    {
+      "id": 1,
+      "model": "Samsung s24",
+      "mobileNumber": "9684573598",
+      "complaint": "Speaker Issue"
+    },
+    {
+      "id": 1,
+      "model": "Samsung s24",
+      "mobileNumber": "9684573598",
+      "complaint": "speaker Issue"
+    }
+  ]
+}

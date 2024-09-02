@@ -1,9 +1,10 @@
-import { UncontrolledComponent } from "./components/hooks/uncontrolledComponent/uncontrolled";
+import { ComplaintForm } from "./components/hooks/controlledComponent/complaintForm";
+
 
 function App() {
   return (
     <>
-      <UncontrolledComponent />
+      <ComplaintForm/>
     </>
   );
 }
