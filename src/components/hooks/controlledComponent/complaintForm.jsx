@@ -73,14 +73,12 @@ export const ComplaintForm = () => {
   };
 
   const apiPost=async(model,mobileNumber,complaint)=>{
-    let val =1
-    const {data}=await axios.post("http://localhost:3000/data",{
-      id: val,
+    
+    const {data}=await axios.post("https://mobilecomplaintdata.onrender.com/data",{
       model,
       mobileNumber,
       complaint
     })
-    val++
     setComplaintData([...complaintData,data])
   }
 
@@ -158,10 +156,6 @@ export const ComplaintForm = () => {
           </tbody>
         </Table>
       )}
-
-
-
-
     </>
   );
 };
