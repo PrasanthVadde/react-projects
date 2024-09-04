@@ -1,9 +1,13 @@
-import { TabSwitching } from "./components/tabSwitching/tab";
+import { BrowserRouter } from "react-router-dom";
+import { NavigationStack } from "./components/navigation/navigationStack";
+
 
 function App() {
   return (
     <>
-      <TabSwitching/>
+     <BrowserRouter>
+     <NavigationStack/>
+     </BrowserRouter>
     </>
   );
 }

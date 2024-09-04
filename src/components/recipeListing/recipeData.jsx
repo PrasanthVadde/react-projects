@@ -81,6 +81,8 @@ export class RecipeData extends Component {
                 flexWrap: "wrap",
                 justifyContent: "center",
                 gap: "10px",
+                height:"75vh",
+                overflowY:"scroll"
               }}
             >
               {this.state.data.map((eachRecipe) => {

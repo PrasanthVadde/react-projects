@@ -63,7 +63,6 @@ export class Weather extends Component {
             <div
               style={{
                 display: "flex",
-                height: "100vh",
                 backgroundImage: this.getBackgroundImage(),
                 filter: "brightness(50%)",
                 backgroundSize: "cover",
