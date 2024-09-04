@@ -1,10 +1,9 @@
-import { UseEffect } from "./components/hooks/useEffect/useEffect";
-
+import { TabSwitching } from "./components/tabSwitching/tab";
 
 function App() {
   return (
     <>
-      <UseEffect/>
+      <TabSwitching/>
     </>
   );
 }
