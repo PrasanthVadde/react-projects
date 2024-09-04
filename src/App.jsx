@@ -1,10 +1,10 @@
-import { DropDown } from "./components/dropDown/dropDown";
+import { UseEffect } from "./components/hooks/useEffect/useEffect";
 
 
 function App() {
   return (
     <>
-      <DropDown/>
+      <UseEffect/>
     </>
   );
 }
