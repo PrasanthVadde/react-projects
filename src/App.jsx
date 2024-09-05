@@ -1,12 +1,13 @@
 import { BrowserRouter } from "react-router-dom";
-import { NavigationStack } from "./components/navigation/navigationStack";
+
+import { RecipeNavigationStack } from "./components/recipeNavigation/recipeNavigationStack";
 
 
 function App() {
   return (
     <>
      <BrowserRouter>
-     <NavigationStack/>
+     <RecipeNavigationStack/>
      </BrowserRouter>
     </>
   );

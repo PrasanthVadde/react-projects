@@ -1,4 +1,5 @@
 import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export const CustomTable = ({ rowData = [] }) => {
   return (
@@ -25,7 +26,19 @@ export const CustomTable = ({ rowData = [] }) => {
   );
 };
 
+
+
+
+
 export const ReusableTable = ({ heading = [], rowData = [] }) => {
+
+
+  // const render=(type)=>{
+  //   switch(type){
+  //     case "ARRAY":
+  //       return <></>
+  //   }
+  // }
   return (
     <Table striped bordered hover>
       <thead>
@@ -33,6 +46,7 @@ export const ReusableTable = ({ heading = [], rowData = [] }) => {
           {heading.map((eachHead, ind) => {
             return <th key={ind}>{eachHead}</th>;
           })}
+          <th>Details</th>
         </tr>
       </thead>
       <tbody>
@@ -40,8 +54,12 @@ export const ReusableTable = ({ heading = [], rowData = [] }) => {
           return (
             <tr key={rowIndex}>
               {heading.map((head, colIndex) => {
-                return <td key={colIndex}>{typeof row[head]=="object" ? "None":row[head] }</td>;
+                return (
+                  head.image ? <td><img src={row[head]}/></td>:
+                  <td key={colIndex}>{typeof row[head]=="object" ? "None":row[head] }</td>
+                )
               })}
+              <td><Link to={`${row.id}`}>View More</Link></td>
             </tr>
           );
         })}
