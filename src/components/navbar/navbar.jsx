@@ -13,7 +13,9 @@ export const Navbar = () => {
           <li className="nav-item" style={liStyle}>
           <NavLink to={"about"} style={style}>about</NavLink>
           </li>
-          
+          <li className="nav-item" style={liStyle}>
+          <NavLink to={"category"} style={style}>Category</NavLink>
+          </li>
         </ul>
       </div>
     </nav>

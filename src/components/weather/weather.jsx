@@ -65,7 +65,9 @@ export class Weather extends Component {
                 display: "flex",
                 backgroundImage: this.getBackgroundImage(),
                 filter: "brightness(50%)",
-                backgroundSize: "cover",
+                backgroundSize: "100% 100%",
+                height:"100%",
+                width:"100%"
               }}
             >
               <Card

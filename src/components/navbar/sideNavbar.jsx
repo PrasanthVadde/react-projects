@@ -19,6 +19,12 @@ export const SideNavbar = () => {
               <NavLink to={"/about"}>About</NavLink>
             </li>
             <li className="nav-item"  style={navItems}>
+              <NavLink to={"/product"}>product</NavLink>
+            </li>
+            <li className="nav-item"  style={navItems}>
+              <NavLink to={"/category"}>category</NavLink>
+            </li>
+            <li className="nav-item"  style={navItems}>
               <NavLink to={"/contact"}>Contact</NavLink>
             </li>
             <li className="nav-item"  style={navItems}>
