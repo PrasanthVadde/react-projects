@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { userDetails } from "../navigation/navigationStack";
 
 export const DetailedProductScreen = () => {
   const [productData, setProductData] = useState({});
-
+  const {darkHandler} = useContext(userDetails)
   const dynamicPath = useParams();
-  console.log(dynamicPath);
 
   useEffect(() => {
     fetchData();
@@ -31,9 +31,11 @@ export const DetailedProductScreen = () => {
 
       {Object.keys(productData).length > 0 && (
         <>
-          <h2>{productData.title}</h2>
+          <div style={{backgroundColor:darkHandler?"black":"white"}}>
+          <h2 style={{color:darkHandler?"white":"black"}}>{productData.title}</h2>
           <img src={productData.image} width={100} height={100} />
-          <p>{productData.description}</p>
+          <p style={{color:darkHandler?"white":"black"}}>{productData.description}</p>
+          </div>
         </>
       )}
     </>
