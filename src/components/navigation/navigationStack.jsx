@@ -1,8 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { HomeScreen } from "../screens/homeScreen";
 import { AboutScreen } from "../screens/aboutScreen";
-// import { Navbar } from "../navbar/navbar";
-// import { InvalidScreen } from "../screens/invalidScreen";
+
 import { SideNavbar } from "../navbar/sideNavbar";
 import { ContactScreen } from "../screens/contactScreen";
 import { SettingsScreen } from "../screens/settingsScreen";
@@ -14,6 +13,8 @@ import { DetailedProductScreen } from "../screens/productDetailScreen";
 import { createContext, useState } from "react";
 
 export const userDetails = createContext();
+
+const globalCounter =createContext()
 
 export const NavigationStack = () => {
   const [userName, setUserName] = useState("Prasanth");
@@ -49,8 +50,8 @@ export const NavigationStack = () => {
 
   return (
     <>
-      {/* <Navbar/> */}
-      <userDetails.Provider
+    <globalCounter.Provider vlaue={}>
+    <userDetails.Provider
         value={{
           userName,
           darkTheme: isDark,
@@ -101,6 +102,7 @@ export const NavigationStack = () => {
           </div>
         </div>
       </userDetails.Provider>
+    </globalCounter.Provider>
     </>
   );
 };

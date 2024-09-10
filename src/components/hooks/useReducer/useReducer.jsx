@@ -8,25 +8,22 @@ const reducer = (state, action) => {
       return { ...state, userName: action.payload };
     case "ADD_TODO":
       return { ...state, todo: [...state.todo, action.payload] };
-    // case "UPDATE_TODO":
-    //   return {
-    //     ...state,
-    //     todo:state.todo.map((eachTodo,ind)=>{
-
-
-    //     })
-    //   };
+    case "UPDATE_TODO":
+      return {
+        ...state,
+        todo: state.todo.map((eachTodo, ind) =>
+          ind === action.payload.index ? action.payload.updatedTodo : eachTodo
+        ),
+      };
     case "DELETE_TODO":
       return {
         ...state,
-        todo: state.todo.filter((_, ind) => ind != action.payload),
+        todo: state.todo.filter((_, ind) => ind !== action.payload),
       };
     default:
       return state;
   }
 };
-
-
 
 export const BasicUseReducer = () => {
   const initialState = {
@@ -36,32 +33,23 @@ export const BasicUseReducer = () => {
     homeAddress: {},
   };
 
-
   const [currentState, dispatch] = useReducer(reducer, initialState);
   const [enteredName, setEnteredName] = useState("");
   const [newTodo, setNewTodo] = useState("");
-  const [updatedTodo, setUpdatedTodo] = useState("");
-
-
-
+  const [updatedTodos, setUpdatedTodos] = useState({});
   const incrementHandler = () => {
     dispatch({
       type: "INCREMENT_AGE",
-      payload: 1,
     });
   };
-
-
 
   const nameHandler = (event) => {
     setEnteredName(event.target.value);
   };
 
-
   const todoHandler = (event) => {
     setNewTodo(event.target.value);
   };
-
 
   const onSubmit = () => {
     if (enteredName) {
@@ -73,7 +61,6 @@ export const BasicUseReducer = () => {
     setEnteredName("");
   };
 
-
   const submitTodo = () => {
     if (newTodo) {
       dispatch({
@@ -84,7 +71,6 @@ export const BasicUseReducer = () => {
     setNewTodo("");
   };
 
-
   const deleteHandler = (value) => {
     dispatch({
       type: "DELETE_TODO",
@@ -92,24 +78,26 @@ export const BasicUseReducer = () => {
     });
   };
 
-
-
-  const todoUpdateHandler = (event) => {
-    setUpdatedTodo(event.target.value);
+  const todoUpdateHandler = (event, index) => {
+    setUpdatedTodos({
+      ...updatedTodos,
+      [index]: event.target.value,
+    });
   };
 
-
-
-  const updateHandler = () => {
-    if(newTodo){
+  const updateHandler = (index) => {
+    const updatedTodo = updatedTodos[index];
+    if (updatedTodo) {
       dispatch({
         type: "UPDATE_TODO",
-        payload:updatedTodo ,
+        payload: {
+          index,
+          updatedTodo,
+        },
       });
+      setUpdatedTodos({ ...updatedTodos, [index]: "" });
     }
   };
-
-
 
   return (
     <>
@@ -141,13 +129,13 @@ export const BasicUseReducer = () => {
               <td>
                 <input
                   type="text"
-                  value={updatedTodo}
-                  onChange={todoUpdateHandler}
-                  placeholder="update the todo"
+                  value={updatedTodos[ind]}
+                  onChange={(event) => todoUpdateHandler(event, ind)}
+                  placeholder="Update the todo"
                 />
               </td>
               <td>
-                <button onClick={() => updateHandler(ind)}>update</button>
+                <button onClick={() => updateHandler(ind)}>Update</button>
               </td>
               <td>
                 <button onClick={() => deleteHandler(ind)}>Delete</button>
