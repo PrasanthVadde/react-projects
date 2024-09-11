@@ -1,13 +1,12 @@
-import { BrowserRouter } from "react-router-dom";
-import { NavigationStack } from "./components/navigation/navigationStack";
+// import { DefaultUseMemo } from "./components/hooks/useMemo/useMemo";
+import { UseMemo1 } from "./components/hooks/useMemo/useMemo1";
 
 
 function App() {
   return (
     <>
-  <BrowserRouter>
-  <NavigationStack/>
-  </BrowserRouter>     
+    <UseMemo1/>
+    {/* <DefaultUseMemo/>     */}
     </>
   );
 }
