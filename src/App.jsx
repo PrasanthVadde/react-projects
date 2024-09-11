@@ -1,10 +1,13 @@
-import { BasicUseReducer } from "./components/hooks/useReducer/useReducer";
+import { BrowserRouter } from "react-router-dom";
+import { NavigationStack } from "./components/navigation/navigationStack";
 
 
 function App() {
   return (
     <>
-  < BasicUseReducer/>      
+  <BrowserRouter>
+  <NavigationStack/>
+  </BrowserRouter>     
     </>
   );
 }
