@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import { HomeScreen } from "../screens/homeScreen";
-import { AboutScreen } from "../screens/aboutScreen";
+import  HomeScreen  from "../screens/homeScreen";
+import  AboutScreen  from "../screens/aboutScreen";
 import { SideNavbar } from "../navbar/sideNavbar";
 import { ContactScreen } from "../screens/contactScreen";
 import { SettingsScreen } from "../screens/settingsScreen";

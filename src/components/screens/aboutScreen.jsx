@@ -1,9 +1,9 @@
-import { useContext } from "react"
+import React, { useContext } from "react"
 import { TabSwitching } from "../tabSwitching/tab"
 import { globalCounter } from "../navigation/navigationStack"
+import { withCounter } from "../hoc/withCOunter"
 
-
-export const AboutScreen =()=>{
+ const AboutScreen =({count,incrementCount})=>{
 
    const {currentState}= useContext(globalCounter)
 
@@ -15,6 +15,13 @@ export const AboutScreen =()=>{
             <TabSwitching/>
             </div>
 
+            <div>
+                <h2>{count}</h2>
+                <button onMouseOver={incrementCount}>increment</button>
+            </div>
+
         </>
     )
 }
+
+export default React.memo(withCounter(AboutScreen))
