@@ -1,12 +1,9 @@
-// import { DefaultUseMemo } from "./components/hooks/useMemo/useMemo";
-import { UseMemo1 } from "./components/hooks/useMemo/useMemo1";
-
+import { BasicUseCallback } from "./components/hooks/useCallback/useCallback";
 
 function App() {
   return (
     <>
-    <UseMemo1/>
-    {/* <DefaultUseMemo/>     */}
+      <BasicUseCallback />
     </>
   );
 }
