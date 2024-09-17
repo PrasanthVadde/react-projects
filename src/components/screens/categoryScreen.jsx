@@ -6,9 +6,13 @@ import {
   incrementAction,
   resetAction,
 } from "../navigation/counterHelper";
+import { useAxios } from "../hooks/customHooks/useAxios";
 
 export const CategoryScreen = () => {
   const { dispatch } = useContext(globalCounter);
+
+  const[categories,error,loading]=useAxios("https://fakestoreapi.com/products/categories")
+  console.log(categories,"categories")
 
   const incrementHandler = () => {
     dispatch(incrementAction);
